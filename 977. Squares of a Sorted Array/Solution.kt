@@ -1,3 +1,4 @@
+/*
 fun sortedSquares(nums: IntArray): IntArray {
     var output = IntArray(0)
     var negMults = IntArray(0)
@@ -26,6 +27,29 @@ fun sortedSquares(nums: IntArray): IntArray {
         }
     }
     return output
+}
+*/
+// Better solution adapted from the forum
+fun sortedSquares(nums: IntArray): IntArray {
+    val l = nums.size
+    val f = IntArray(l)
+    var s = 0
+    var e = l - 1
+    var i = l - 1
+
+    while (s <= e) {
+        val a = nums[s] * nums[s]
+        val b = nums[e] * nums[e]
+        if (a > b) {
+            f[i] = a
+            s++
+        } else {
+            f[i] = b
+            e--
+        }
+        i--
+    }
+    return f
 }
 
 fun main () {
