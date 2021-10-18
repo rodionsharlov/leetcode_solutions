@@ -1,4 +1,6 @@
+/*
 fun moveZeroes(nums: IntArray): Unit {
+
     var insertPosition = -1
     var segmentStart = -1
     var segmentEnd = -1
@@ -41,6 +43,16 @@ fun moveZeroes(nums: IntArray): Unit {
     if (insertPosition != -1)
         for (ind in insertPosition..nums.lastIndex)
             nums[ind] = 0
+
+*/
+// This solution is much much more clever and concise
+fun moveZeroes(nums: IntArray): Unit {
+    var lastNonZeroFoundAt = 0
+    for (i in nums.indices)
+        if (nums[i] != 0)
+            nums[lastNonZeroFoundAt++] = nums[i]
+    for (ind in lastNonZeroFoundAt..nums.lastIndex)
+        nums[ind] = 0
 }
 
 fun main () {
