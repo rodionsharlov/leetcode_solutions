@@ -9,13 +9,20 @@
  */
 class Solution {
     fun middleNode(head: ListNode?): ListNode? {
-        var arr = Array<ListNode?>(100){ null }
-        var ind = 0
-        var node = head
-        while (node != null) {
-            arr[ind++] = node
-            node = node.next
+//        var arr = Array<ListNode?>(100){ null }
+//        var ind = 0
+//        var node = head
+//        while (node != null) {
+//            arr[ind++] = node
+//            node = node.next
+//        }
+//        return arr[ind / 2]
+        var fast = head
+        var slow = head
+        while (fast != null && fast.next != null) {
+            slow = slow!!.next
+            fast = fast.next.next
         }
-        return arr[ind / 2]
+        return slow
     }
 }
